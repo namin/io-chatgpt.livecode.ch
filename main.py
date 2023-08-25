@@ -4,32 +4,26 @@ import quart
 import quart_cors
 from quart import request
 
+import requests
+
 app = quart_cors.cors(quart.Quart(__name__), allow_origin="https://chat.openai.com")
 
-# Keep track of todo's. Does not persist if Python session is restarted.
-_TODOS = {}
-
-@app.post("/todos/<string:username>")
-async def add_todo(username):
+@app.post("/run/<string:user>/<string:repo>")
+async def run(user, repo):
     request = await quart.request.get_json(force=True)
-    if username not in _TODOS:
-        _TODOS[username] = []
-    _TODOS[username].append(request["todo"])
-    return quart.Response(response='OK', status=200)
-
-@app.get("/todos/<string:username>")
-async def get_todos(username):
-    return quart.Response(response=json.dumps(_TODOS.get(username, [])), status=200)
-
-@app.delete("/todos/<string:username>")
-async def delete_todo(username):
-    request = await quart.request.get_json(force=True)
-    todo_idx = request["todo_idx"]
-    # fail silently, it's a simple plugin
-    if 0 <= todo_idx < len(_TODOS[username]):
-        _TODOS[username].pop(todo_idx)
-    return quart.Response(response='OK', status=200)
-
+    data = {}
+    for k in request.keys():
+        data[k] = request[k]
+    if 'main' not in data:
+        data['main'] = ''
+    if 'pre' not in data:
+        data['pre'] = ''
+    if 'post' not in data:
+        data['post'] = ''
+    r = requests.post(f"https://io.livecode.ch/api/run/{user}/{repo}", data = data)
+    text = json.dumps({'result': r.text})
+    return quart.Response(response=text, mimetype="text/json", status=200)
+    
 @app.get("/logo.png")
 async def plugin_logo():
     filename = 'logo.png'
@@ -48,6 +42,25 @@ async def openapi_spec():
     with open("openapi.yaml") as f:
         text = f.read()
         return quart.Response(text, mimetype="text/yaml")
+
+@app.get("/")
+async def index():
+    return quart.Response("""
+<html>
+<head>
+<title>io.livecode.ch</title>
+</head>
+<body>
+<h1><a href="https://io.livecode.ch">io.livecode.ch</a></h1>
+
+<blockquote>
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</blockquote>
+
+</body>
+</html>
+
+""", mimetype="text/html")
 
 def main():
     app.run(debug=True, host="0.0.0.0", port=5003)

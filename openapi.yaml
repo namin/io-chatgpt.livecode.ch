@@ -1,93 +1,60 @@
 openapi: 3.0.1
 info:
-  title: TODO Plugin
-  description: A plugin that allows the user to create and manage a TODO list using ChatGPT. If you do not know the user's username, ask them first before making queries to the plugin. Otherwise, use the username "global".
+  title: io.livecode.ch
+  description: Interact with repositories available io.livecode.ch. If you do not know the respository (for example webyrd/webmk), ask the user first before making queries.
   version: 'v1'
 servers:
   - url: http://localhost:5003
 paths:
-  /todos/{username}:
-    get:
-      operationId: getTodos
-      summary: Get the list of todos
+  /run/{user}/{repo}:
+    post:
+      operationId: run
+      summary: Evaluate code on io.livecode.ch.
       parameters:
       - in: path
-        name: username
+        name: user
         schema:
             type: string
         required: true
-        description: The name of the user.
+        description: The name of the user of the repository on Github.
+      - in: path
+        name: repo
+        schema:
+            type: string
+        required: true
+        description: The name of the repository on Github.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/runRequest'
+
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTodosResponse'
-    post:
-      operationId: addTodo
-      summary: Add a todo to the list
-      parameters:
-      - in: path
-        name: username
-        schema:
-            type: string
-        required: true
-        description: The name of the user.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/addTodoRequest'
-      responses:
-        "200":
-          description: OK
-    delete:
-      operationId: deleteTodo
-      summary: Delete a todo from the list
-      parameters:
-      - in: path
-        name: username
-        schema:
-            type: string
-        required: true
-        description: The name of the user.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/deleteTodoRequest'
-      responses:
-        "200":
-          description: OK
+                $ref: '#/components/schemas/runResponse'
 
 components:
   schemas:
-    getTodosResponse:
+    runResponse:
       type: object
       properties:
-        todos:
-          type: array
-          items:
-            type: string
-          description: The list of todos.
-    addTodoRequest:
-      type: object
-      required:
-      - todo
-      properties:
-        todo:
+        result:
           type: string
-          description: The todo to add to the list.
-          required: true
-    deleteTodoRequest:
+          description: The result of evaluating the query.
+    runRequest:
       type: object
-      required:
-      - todo_idx
       properties:
-        todo_idx:
-          type: integer
-          description: The index of the todo to delete.
-          required: true
+        main:
+          type: string
+          description: The code to be evaluated.
+        pre:
+          type: string
+          description: Preambule to the code. For example, helper functions.
+        post:
+          type: string
+          description: Postambule to the code. For example, run instructions.
