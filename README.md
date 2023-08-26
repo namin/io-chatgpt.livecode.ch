@@ -32,6 +32,8 @@ The plugin should now be installed and enabled! You can start with a question li
 
 ### Code Sandbox
 
+### [DigitalOcean](deploy)
+
 ### Replit
 
 ## Getting help
