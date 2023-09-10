@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: io.livecode.ch
-  description: Interact with repositories available io.livecode.ch. If you do not know the respository (for example webyrd/webmk), ask the user first before making queries.
+  title: Exec io.livecode.ch
+  description: Interact with repositories available io.livecode.ch. If you do not know the respository (for example webyrd/webmk), ask the user first before making queries. Do not guess the repository.
   version: 'v1'
 servers:
-  - url: http://localhost:5003
+  - url: https://io-chatgpt.livecode.ch
 paths:
   /run/{user}/{repo}:
     post:
@@ -45,7 +45,7 @@ components:
       properties:
         result:
           type: string
-          description: The result of evaluating the query.
+          description: The result of evaluating the query or an error message if evaluation failed.
     runRequest:
       type: object
       properties:

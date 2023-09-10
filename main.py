@@ -21,7 +21,10 @@ async def run(user, repo):
     if 'post' not in data:
         data['post'] = ''
     r = requests.post(f"https://io.livecode.ch/api/run/{user}/{repo}", data = data)
-    text = json.dumps({'result': r.text})
+    text = r.text
+    if text.startswith('installation error'):
+        text = "The repository is not a valid io.livecode.ch repository. Ask the user for one."
+    text = json.dumps({'result': text})
     return quart.Response(response=text, mimetype="text/json", status=200)
     
 @app.get("/logo.png")
@@ -48,10 +51,10 @@ async def index():
     return quart.Response("""
 <html>
 <head>
-<title>io.livecode.ch</title>
+<title>Exec io.livecode.ch</title>
 </head>
 <body>
-<h1><a href="https://io.livecode.ch">io.livecode.ch</a></h1>
+<h1>Exec <a href="https://io.livecode.ch">io.livecode.ch</a></h1>
 
 <blockquote>
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
