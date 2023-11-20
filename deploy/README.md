@@ -7,7 +7,7 @@ These steps have been tested on a [DigitalOcean](https://www.digitalocean.com/?r
 ## Showcase
 
 We can create a GPT similar to the [io.livecode.ch GPT](https://chat.openai.com/g/g-PfamS7B7f-io-livecode-ch).
-Here are some example transcript:
+Here is some example transcript:
 - [_Explain a MaxSAT problem and write it in the z3-solver python library._](https://chat.openai.com/share/c897b33c-6919-4638-a005-334015205cc8)
 
 ## Prerequisites
