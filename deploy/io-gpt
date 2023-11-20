@@ -1,0 +1,8 @@
+server {
+    server_name YOUR_DOMAIN;
+    listen 80;
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/var/www/io-gpt/io-gpt.sock;
+    }
+}

@@ -4,11 +4,12 @@ info:
   description: Interact with repositories available io.livecode.ch. If you do not know the respository (for example webyrd/webmk), ask the user first before making queries. Do not guess the repository.
   version: 'v1'
 servers:
-  - url: https://io-chatgpt.livecode.ch
+  - url: PLUGIN_HOSTNAME
 paths:
   /run/{user}/{repo}:
     post:
       operationId: run
+      x-openai-isConsequential: false
       summary: Evaluate code on io.livecode.ch.
       parameters:
       - in: path
