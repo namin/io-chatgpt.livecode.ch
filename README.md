@@ -1,8 +1,9 @@
-# ChatGPT plugins quickstart
+# ChatGPT plugins or actions quickstart
 
-Get a ChatGPT plugin up and running in under 5 minutes using Python. This plugin is designed to work in conjunction with the [ChatGPT plugins documentation](https://platform.openai.com/docs/plugins). If you do not already have plugin developer access, please [join the waitlist](https://openai.com/waitlist/plugins).
+Get a ChatGPT plugin or action up and running in under 5 minutes using Python. This plugin is designed to work in conjunction with the [ChatGPT plugins documentation](https://platform.openai.com/docs/plugins). If you do not already have plugin developer access, please [join the waitlist](https://openai.com/waitlist/plugins).
+Plugin developer access is not required for GPT actions.
 
-## Setup locally
+## Setup locally (only for plugins)
 
 To install the required packages for this plugin, run the following command:
 
@@ -26,16 +27,10 @@ Once the local server is running:
 
 The plugin should now be installed and enabled! You can start with a question like "What is on my todo list" and then try adding something to it as well! 
 
-## Setup remotely
-
-### Cloudflare workers
-
-### Code Sandbox
+## Setup remotely (for plugins and actions)
 
 ### [DigitalOcean](deploy)
 
-### Replit
-
 ## Getting help
 
-If you run into issues or have questions building a plugin, please join our [Developer community forum](https://community.openai.com/c/chat-plugins/20).
+If you run into issues or have questions building a plugin or action, please join OpenAI's [Developer community forum](https://community.openai.com/c/chat-plugins/20).
