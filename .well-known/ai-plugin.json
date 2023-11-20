@@ -1,7 +1,7 @@
 {
     "schema_version": "v1",
     "name_for_human": "io.livecode.ch",
-    "name_for_model": "io_livecode_ch",
+    "name_for_model": "io-gpt",
     "description_for_human": "Evaluate snippets of code using io.livecode.ch.",
     "description_for_model": "Evaluate snippets of code using io.livecode.ch. Ask the user for the repository.",
     "auth": {
