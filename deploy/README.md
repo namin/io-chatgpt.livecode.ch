@@ -15,7 +15,7 @@ These steps have been tested on a [DigitalOcean](https://www.digitalocean.com/?r
 - `sudo systemctl start io-gpt`
 - `sudo systemctl enable io-gpt`
 - `sudo systemctl status io-gpt` (to check all OK)
-- Edit `YOUR_DOMAIN` in deploy/io-gpt
+- Edit `YOUR_DOMAIN` in `deploy/io-gpt`
 - `sudo cp deploy/io-gpt /etc/nginx/sites-available/`
 - `sudo ln -s /etc/nginx/sites-available/io-gpt /etc/nginx/sites-enabled`
 - `sudo nginx -t`
