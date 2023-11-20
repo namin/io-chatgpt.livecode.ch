@@ -32,6 +32,6 @@ Follow all the prerequisites, all the step 1 and and part of step 2 (only the fi
 - Go to [chat.openai.com](https://chat.openai.com)
 - Explore -> Create a GPT -> Configure.
 - Scroll down to create new action.
-- Import from URL. Put _YOUR_DOMAIN/openapi.yaml_ just configured above. Import.
+- Import from URL. Put https://_YOUR_DOMAIN_/openapi.yaml just configured above. Import.
 - For the Privacy Policy, you can put _YOUR_DOMAIN_.
 - Test it!
