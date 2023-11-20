@@ -5,6 +5,8 @@
 These steps have been tested on a [DigitalOcean](https://www.digitalocean.com/?refcode=10856c6c1ff2) (referral link) docker application droplet.
 
 - Clone the repository in `/var/www/` directory.
+  - `cd /var/www/`
+  - `git clone https://github.com/namin/io-chatgpt.livecode.ch.git io-gpt`
 - `cd io-gpt`
 - `python3 -m venv io-gpt-env`
 - `source io-gpt-env/bin/activate`
