@@ -1,8 +1,14 @@
-# Steps to deploy in production
+# How to deploy a ChatGPT plugin or action to production with DigitalOcean
 
 [![DigitalOcean](https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg)](https://www.digitalocean.com/?refcode=10856c6c1ff2)
 
 These steps have been tested on a [DigitalOcean](https://www.digitalocean.com/?refcode=10856c6c1ff2) (referral link) docker application droplet.
+
+## Prerequisites
+
+Follow all the prerequisites, all the step 1 and and part of step 2 (only the first `sudo apt-get install ...`) of [this guide](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-22-04#prerequisites).
+
+## Steps on Server
 
 - Clone the repository in `/var/www/` directory.
   - `cd /var/www/`
@@ -21,3 +27,11 @@ These steps have been tested on a [DigitalOcean](https://www.digitalocean.com/?r
 - `sudo nginx -t`
 - `sudo systemctl restart nginx`
 - `sudo certbot --nginx -d YOUR_DOMAIN` (for SSL)
+
+## Steps to setup a GPT action in ChatGPT
+- Go to [chat.openai.com](https://chat.openai.com)
+- Explore -> Create a GPT -> Configure.
+- Scroll down to create new action.
+- Import from URL. Put _YOUR_DOMAIN/openapi.yaml_ just configured above. Import.
+- For the Privacy Policy, you can put _YOUR_DOMAIN_.
+- Test it!
