@@ -13,6 +13,9 @@ Follow all the prerequisites, all the step 1 and and part of step 2 (only the fi
 - Clone the repository in `/var/www/` directory.
   - `cd /var/www/`
   - `git clone https://github.com/namin/io-chatgpt.livecode.ch.git io-gpt`
+  - If you get permission denied, you need to give your user permissions to write in this directory:
+    - `sudo chown root:www-data /var/www`
+    - `sudo chmod g+w /var/www`
 - `cd io-gpt`
 - `python3 -m venv io-gpt-env`
 - `source io-gpt-env/bin/activate`
