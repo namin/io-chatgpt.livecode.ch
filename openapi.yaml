@@ -9,6 +9,7 @@ paths:
   /run/{user}/{repo}:
     post:
       operationId: run
+      x-openai-isConsequential: false
       summary: Evaluate code on io.livecode.ch.
       parameters:
       - in: path
