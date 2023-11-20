@@ -62,5 +62,5 @@ curl -X POST 'https://io-gpt.livecode.ch/run/namin/pyfun' \
 should return
 
 ```
-{"result": "42\n"}%
+{"result": "42\n"}
 ```
