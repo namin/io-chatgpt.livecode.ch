@@ -50,3 +50,17 @@ Follow all the prerequisites, all the step 1 and and part of step 2 (only the fi
 As explained in the [prerequisite guide](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-22-04#step-6-securing-the-application), you can access the logs of your application with `sudo journalctl -u io-gpt`.
 
 To restart the service after a change, `sudo systemctl restart io-gpt`.
+
+You can manually send a POST request to the server.
+
+```
+curl -X POST 'https://io-gpt.livecode.ch/run/namin/pyfun' \
+-H 'Content-Type: application/json' \
+-d '{"main": "print(41+1)"}'
+```
+
+should return
+
+```
+{"result": "42\n"}%
+```
