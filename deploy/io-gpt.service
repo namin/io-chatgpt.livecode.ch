@@ -5,9 +5,9 @@ After=network.target
 [Service]
 User=namin
 Group=www-data
-WorkingDirectory=/home/namin/io-gpt.livecode.ch
-Environment="PATH=/home/namin/io-gpt.livecode.ch/io-gpt-env/bin"
-ExecStart=/home/namin/io-gpt.livecode.ch/io-gpt-env/bin/hypercorn -b unix:io-gpt.sock -w 3 -g 33 -m 775 main:app
+WorkingDirectory=/var/www/io-gpt
+Environment="PATH=/var/www/io-gpt/io-gpt-env/bin"
+ExecStart=/var/www/io-gpt/io-gpt-env/bin/hypercorn -b unix:io-gpt.sock -w 3 -g 33 -m 775 main:app
 
 [Install]
 WantedBy=multi-user.target
