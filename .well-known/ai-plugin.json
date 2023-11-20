@@ -9,10 +9,10 @@
     },
     "api": {
       "type": "openapi",
-      "url": "https://io-chatgpt.livecode.ch/openapi.yaml"
+      "url": "PLUGIN_HOSTNAME/openapi.yaml"
     },
-    "logo_url": "https://io-chatgpt.livecode.ch/logo.png",
+    "logo_url": "PLUGIN_HOSTNAME/logo.png",
     "contact_email": "namin@seas.harvard.edu",
-    "legal_info_url": "https://io-chatgpt.livecode.ch"
+    "legal_info_url": "PLUGIN_HOSTNAME"
   }
   
