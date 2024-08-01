@@ -46,7 +46,10 @@ Follow all the prerequisites, all the step 1 and and part of step 2 (only the fi
 - Import from URL. Put https://_YOUR_DOMAIN_/openapi.yaml just configured above. Import.
 - For the Privacy Policy, you can put _YOUR_DOMAIN_.
 - Test it!
-- (You can try my server io-gpt.livecode.ch for _YOUR_DOMAIN_.) 
+- (You can try my server io-gpt.livecode.ch for _YOUR_DOMAIN_.) For io-gpt, here are the initial instructions:
+  
+  > Ask the user for a repo, or use namin/pyfun.
+  > When using namin/pyfun, be sure to `print` what you want to see.
 
 ## Development
 - After making edits on your server, run `sudo systemctl restart io-gpt`.
