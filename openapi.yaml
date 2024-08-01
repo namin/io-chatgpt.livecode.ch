@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
   title: Exec io.livecode.ch
   description: Interact with repositories available io.livecode.ch. If you do not know the respository (for example webyrd/webmk), ask the user first before making queries. Do not guess the repository.
