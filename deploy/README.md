@@ -19,22 +19,23 @@ Follow all the prerequisites, all the step 1 and and part of step 2 (only the fi
 
 - Clone the repository in `/var/www/` directory.
   - `cd /var/www/`
-  - `git clone https://github.com/namin/io-chatgpt.livecode.ch.git io-gpt`
+  - `git clone https://github.com/namin/io-chatgpt.livecode.ch.git YOUR_TITLE-gpt`
   - If you get permission denied, you need to give your user permissions to write in this directory:
     - `sudo chown root:www-data /var/www`
     - `sudo chmod g+w /var/www`
-- `cd io-gpt`
-- `python3 -m venv io-gpt-env`
-- `source io-gpt-env/bin/activate`
+- `cd YOUR_TITLE-gpt`
+- `python3 -m venv YOUR_TITLE-gpt-env`
+- `source YOUR_TITLE-gpt-env/bin/activate`
 - `pip install -r requirements.txt`
 - (optional) `deactivate` (to exit environment)
-- `sudo cp deploy/io-gpt.service /etc/systemd/system/`
-- `sudo systemctl start io-gpt`
-- `sudo systemctl enable io-gpt`
-- `sudo systemctl status io-gpt` (to check all OK)
-- Edit `YOUR_DOMAIN` in `deploy/io-gpt`
-- `sudo cp deploy/io-gpt /etc/nginx/sites-available/`
-- `sudo ln -s /etc/nginx/sites-available/io-gpt /etc/nginx/sites-enabled`
+- `sudo cp deploy/YOUR_TITLE-gpt.service /etc/systemd/system/`
+- `sudo systemctl start YOUR_TITLE-gpt`
+- `sudo systemctl enable YOUR_TITLE-gpt`
+- `sudo systemctl status YOUR_TITLE-gpt` (to check all OK)
+- Edit `YOUR_DOMAIN` in `deploy/YOUR_TITLE-gpt`
+- Replace `io` with `YOUR_TITLE` across all instances in `deploy/YOUR_TITLE-gpt` and `deploy/YOUR_TITLE-gpt.service`
+- `sudo cp deploy/YOUR_TITLE-gpt /etc/nginx/sites-available/`
+- `sudo ln -s /etc/nginx/sites-available/YOUR_TITLE-gpt /etc/nginx/sites-enabled`
 - `sudo nginx -t`
 - `sudo systemctl restart nginx`
 - `sudo certbot --nginx -d YOUR_DOMAIN` (for SSL)
